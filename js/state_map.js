@@ -60,7 +60,7 @@ var stateShapes = svg.append("g")
       })
   .on("click", function(d, i) {
     let stateChosen = d3.select(this);
-    const node = svg.node();
+    const node = svg4.node();
     node.value = value = value === d.State ? 0 : d.State;
     node.dispatchEvent(new CustomEvent("input"));
     })
@@ -194,7 +194,7 @@ function showDetail(d) {
 function hideDetail(d) {
   // reset outline
   d3.select(this)
-    .attr('stroke', d3.rgb(fillColor(d.mm)).darker());
+    .attr('stroke', d3.rgb("#beccae").darker());
 
   tooltip.hideTooltip();
 }
