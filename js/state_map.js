@@ -43,7 +43,7 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
     }
   }
 
-console.log(usa[2])
+console.log(usa[2].properties)
 
 var stateShapes = svg.append("g")
     .attr("class", "states")
@@ -71,39 +71,32 @@ var stateShapes = svg.append("g")
   })
 })
 
-// var line = d3.line()
-//   .defined(d => !isNaN(d.Cap))
-//   .x(d => x(d.Year))
-//   .y(d => y(d.Cap))
-
-// var line2 = d3.line()
-//   .defined(d => !isNaN(d.resettled))
-//   .x(d => x(d.Year))
-//   .y(d => y(d.resettled))
-
-// function update(year){
-// 		slider.property("value", year);
-// 		d3.select(".year").text(year);
-// 		stateShapes.style("opacity", function(d) {
-// 			return d.shareMM
-// 		});
-// 	}
-
-// var slider = d3.select(".slider")
-// 		.append("input")
-// 			.attr("type", "range")
-// 			.attr("min", 2014)
-// 			.attr("max", 2018)
-// 			.attr("step", 1)
-// 			.on("input", function() {
-// 				var year = this.value;
-// 				update(year);
-// 			});
-
-// update(2014)
-
-resettleData = d3.csv("data/MMresettle_2014-2018.csv")
-console.log(resettleData)
+switch (selected) {
+    case "South Boston Waterfront": return usa[0]
+    case "Back Bay": return boston311data[1]
+    case "East Boston": return boston311data[2]
+    case "Roxbury": return boston311data[3]
+    case "South End": return boston311data[4]
+    case "Beacon Hill": return boston311data[5]
+    case "Downtown": return boston311data[6]
+    case "Charlestown": return boston311data[7]
+    case "West End": return boston311data[8]
+    case "Mission Hill": return boston311data[9]
+    case "Longwood Medical Area": return boston311data[10]
+    case "Roslindale": return boston311data[11]
+    case "Jamaica Plain": return boston311data[12]
+    case "Chinatown": return boston311data[13]
+    case "North End": return boston311data[14]
+    case "Bay Village": return boston311data[15]
+    case "Leather District": return boston311data[16]
+    case "West Roxbury": return boston311data[17]
+    case "Mattapan": return boston311data[18]
+    case "Fenway": return boston311data[19]
+    case "Brighton": return boston311data[20]
+    case "South Boston": return boston311data[21]
+    case "Allston": return boston311data[22]
+    case "Dorchester": return boston311data[23]
+  }
 
 var variables = ["Resettled 2014","Resettled_MM 2014","Resettled 2015","resettled_MM15","resettled16","resettled_MM16","resettled17","resettled_MM17","resettled18","resettled_MM18"]
 var stateResettle = [
@@ -163,17 +156,13 @@ var svg4 = d3.select("#id6").append("svg")
       .attr("fill", "steelblue")
       .attr("height", y.bandwidth());
 
-      svg.node().update = () => {
+    svg4.node().update = () => {
         const t = svg.transition()
             .duration(750);
     
-        bar.data(boston311data, d => d.name)
+    bar.data(usa, d => d.State)
             .order()
           .transition(t)
             .delay((d, i) => i * 20)
-            .attr("x", d => x(d.Name));
-    
-        gx.transition(t)
-            .call(yAxis)
-          .selectAll(".tick")
-            .delay((d, i) => i * 20);}
+            .attr("x", d => x(d.State));
+    }
