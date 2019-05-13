@@ -26,6 +26,9 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
           usa[j].properties.shareMM2016 = +data[i].share_MM16;
           usa[j].properties.shareMM2015 = +data[i].share_MM15;
           usa[j].properties.shareMM2014 = +data[i].share_MM14;
+          usa[j].properties.eighteen.resettled = +data[i].resettled18;
+          usa[j].properties.eighteen.resettledMM = +data[i].resettled_MM18;
+          usa[j].properties.eighteen.year = 2018;
           usa[j].properties.resettled2018 = +data[i].resettled18;
           usa[j].properties.resettled2017 = +data[i].resettled17;
           usa[j].properties.resettled2016 = +data[i].resettled16;
@@ -43,7 +46,7 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
     }
 }
 
-//console.log(usa)
+console.log(usa[2])
 
 var stateShapes = svg.append("g")
       .attr("class", "states")
@@ -52,8 +55,7 @@ var stateShapes = svg.append("g")
 	.enter().append("path")
 	  .attr("d", path)
     .attr("class", "resettle")
-    //.attr("opacity", d => d.shareMM2016)
-   // .attr("opacity", d => d.properties.shareMM2016)
+   .attr("opacity", d => d.properties.shareMM2016)
    
   .on("mouseover", function(d, i) {
           reporter(d);
@@ -71,6 +73,18 @@ var stateShapes = svg.append("g")
 
   })
 })
+
+var line = d3.line()
+.defined(d => !isNaN(d.Cap))
+.x(d => x(d.Year))
+.y(d => y(d.Cap))
+
+var line2 = d3.line()
+.defined(d => !isNaN(d.resettled))
+.x(d => x(d.Year))
+.y(d => y(d.resettled))
+
+
 
 function update(year){
 		slider.property("value", year);
