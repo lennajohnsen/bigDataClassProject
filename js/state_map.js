@@ -112,9 +112,9 @@ var stateShapes = svg.append("g")
 //     .domain([0, d3.max(bos311, d => d.Resettle)])
 //     .range([margin.left, width - margin.right])
 
-// xAxis = g => g
-//     .attr("transform", `translate(0,${height - margin.bottom})`)
-//     .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0).tickFormat(d3.format("d")))
+ xAxis = g => g
+     .attr("transform", `translate(0,${height - margin.bottom})`)
+     .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0).tickFormat(d3.format("d")))
  
 // yAxis = g => g
 //     .attr("transform", `translate(${margin.left},0)`)
@@ -125,11 +125,11 @@ var stateShapes = svg.append("g")
 //       .attr("text-anchor", "start")
 //       .attr("font-weight", "bold"))
 
-// svg4 = d3.select("#id6").append("svg")
-//       .attr("width", width)
-//       .attr("height", height)
-//       .style("-webkit-tap-highlight-color", "transparent");
-//       //.attr("viewBox", `0 0 ${width} ${height}`);
+ svg4 = d3.select("#id6").append("svg")
+       .attr("width", width)
+       .attr("height", height)
+       .style("-webkit-tap-highlight-color", "transparent");
+       //.attr("viewBox", `0 0 ${width} ${height}`);
   
 //   if (!this) {
 //     svg4.append("g")
@@ -140,8 +140,8 @@ var stateShapes = svg.append("g")
 //         .attr("width", 0)
 //         .attr("class", "bar")
 
-//     svg4.append("g")
-//       .attr("class", "x-axis")
+     svg4.append("g")
+       .attr("class", "x-axis")
 
 //     svg4.append("g")
 //       .attr("class", "y-axis")
