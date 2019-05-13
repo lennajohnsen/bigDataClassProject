@@ -41,7 +41,7 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
           break;
         }
     }
-
+  }
 
 console.log(usa[2])
 
