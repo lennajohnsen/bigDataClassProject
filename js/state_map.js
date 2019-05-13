@@ -94,13 +94,15 @@ var variables = ["resettled14","resettled_MM14","resettled15","resettled_MM15","
 //   {"type":variables[9], "num": selected.properties.resettled_MM18},
 // ]
 
+margin = ({top: 10, right: 10, bottom: 20, left: 120})
+
 x = d3.scaleBand()
     .domain(variables)
-    .range([height - margin.bottom, margin.top])
+    .range([400 - margin.bottom, margin.top])
     .padding(0.1)
 
 y = d3.scaleLinear()
-    .domain([0, d3.max(stateResettle, d => d.num)])
+    .domain([0, d3.max(bos311, d => d.Resettle)])
     .range([margin.left, width - margin.right])
 
 xAxis = g => g
