@@ -183,7 +183,7 @@ function showDetail(d) {
                 d.State +
                 '</span><br/>' +
                 '<span class="name">Difference in Number Resettled in 2014 vs 2018: </span><span class="value">' +
-                addCommas(firstDiff) +
+                addCommas(d.properties.resettled2014) +
                 '</span><br/>' +
                 '<span class="name">Difference in Number Resettled in 2014 vs 2018 from Muslim-Majority Countries: </span><span class="value">' +
                 addCommas(secondDiff) +
