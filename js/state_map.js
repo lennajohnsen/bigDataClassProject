@@ -2,8 +2,8 @@
 //bl.ocks.org/michellechandra/0b2ce4923dc9b5809922
 //bl.ocks.org/phil-pedruco/10447085
 
-var svg = d3.select("#id4").append("svg")
-  .attr("width", 700)
+var svg = d3.select("#id5").append("svg")
+  .attr("width", 1200)
   .attr("height", 600);
 
 var projection = d3.geoAlbersUsa()
