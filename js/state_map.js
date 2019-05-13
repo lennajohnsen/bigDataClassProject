@@ -95,7 +95,7 @@ var variables = ["resettled14","resettled_MM14","resettled15","resettled_MM15","
 // ]
 
 x = d3.scaleBand()
-    .domain(stateResettle.map(d => d.type))
+    .domain(variables)
     .range([height - margin.bottom, margin.top])
     .padding(0.1)
 
