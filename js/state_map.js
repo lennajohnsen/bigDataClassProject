@@ -3,7 +3,7 @@
 //bl.ocks.org/phil-pedruco/10447085
 
 var svg = d3.select("#id5").append("svg")
-  .attr("width", 1200)
+  .attr("width", 1000)
   .attr("height", 600);
 
 var projection = d3.geoAlbersUsa()
