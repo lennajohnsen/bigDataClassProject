@@ -38,6 +38,7 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
           usa[j].properties.resettledMM2016 = +data[i].resettled_MM16;
           usa[j].properties.resettledMM2015 = +data[i].resettled_MM15;
           usa[j].properties.resettledMM2014 = +data[i].resettled_MM14;
+          usa[j].properties.diffMMResettled14_18 = +usa[j].properties.resettledMM2014 - +usa[j].properties.resettled2018
           usa[j].State = data[i].state;
           //usa[j].id = data[i].state_code;
           break;
@@ -54,7 +55,7 @@ var stateShapes = svg.append("g")
 	.enter().append("path")
 	  .attr("d", path)
     .attr("class", "resettle")
-   //.attr("opacity", d => d.properties.shareMM2016)
+    .attr("opacity", d => d.properties.diffMMResettled14_18/100)
   .on("mouseover", function(d, i) {
           reporter(d);
       })
@@ -179,10 +180,10 @@ function showDetail(d) {
   var content = '<span class="name">State: </span><span class="value">' +
                 d.State +
                 '</span><br/>' +
-                '<span class="name">Difference in Number Resettled in 2014 vs 2018: </span><span class="value">' +
-                addCommas(+d.properties.resettled2014 - +d.properties.resettled2018) +
+                '<span class="name">Difference in Cases Resettled between 2014 vs 2018: </span><span class="value">' +
+                addCommas(+d.properties.resettled2014 - +d.properties.resettled2018) + 
                 '</span><br/>' +
-                '<span class="name">Difference in Number Resettled in 2014 vs 2018 from Muslim-Majority Countries: </span><span class="value">' +
+                '<span class="name">Difference in Number Resettled between 2014 vs 2018 from Muslim-Majority Countries: </span><span class="value">' +
                 addCommas(+d.properties.resettledMM2014 - +d.properties.resettled2018) +
                 '</span>';
 
