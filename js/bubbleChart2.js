@@ -301,6 +301,7 @@ var yearCentersY = {
       .attr('x', function (d) { return yearsTitleX[d]; })
       .attr('y', 40)
       .attr('text-anchor', 'middle')
+      .attr('font-family','Chivo', sans-serif)
       .text(function (d) { return d; });
   }
 
