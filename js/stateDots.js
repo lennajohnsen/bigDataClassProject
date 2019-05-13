@@ -6,8 +6,8 @@ var svg2 = d3.select("#id5").append("svg")
 
 var path = d3.geoPath()
 
-d3.csv("MMresettle_2014-2018.csv", function(data) {
-    d3.json("us.json", function(json) {
+d3.csv("data/MMresettle_2014-2018.csv", function(data) {
+    d3.json("data/us.json", function(json) {
         var presimplified = topojson.presimplify(json)
         var simplified = topojson.simplify(presimplified, topojson.quantile(presimplified, .11))
         var states = topojson.feature(simplified, simplified.objects.states).features
