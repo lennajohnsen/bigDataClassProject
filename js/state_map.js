@@ -187,7 +187,7 @@ function showDetail(d) {
   var content = '<span class="name">State: </span><span class="value">' +
                 d.State +
                 '</span><br/>' +
-                '<span class="name">Difference in Cases Resettled between 2018 and 2014: </span><span class="value">' +
+                '<span class="name">Difference in Cases Resettled </span><br/><span> between 2018 and 2014: </span><span class="value">' +
                 addCommas(+d.properties.resettled2018 - +d.properties.resettled2014) + 
                 '</span><br/>' +
                 '<span class="name">Difference in Number Resettled between 2018 and 2014 from Muslim-Majority Countries: </span><span class="value">' +
