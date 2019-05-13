@@ -21,27 +21,27 @@ d3.csv("data/refugee by muslim majority by fy year by state.csv", function(data)
         var stateCode = +data[i].state_code
       for (var j in usa){
         var iD = +usa[j].id
-        var FY =+usa[j].fy
+        var FY = +usa[j].fy
         if (stateCode == iD){
           usa[j].State = data[i].state;
         }
-        if (stateCode == iD & FY == 2018) {
+        if (stateCode == iD && FY == 2018) {
           usa[j].properties={
             [2018]: [+data[i].resettled_MM,+data[i].resettled,+data[i].share_MM]
           } 
-        } else if (stateCode == iD & FY == 2017){
+        } else if (stateCode == iD && FY == 2017){
           usa[j].properties={
             [2017]: [+data[i].resettled_MM,+data[i].resettled,+data[i].share_MM]
           }
-        } else if (stateCode == iD & FY == 2016){
+        } else if (stateCode == iD && FY == 2016){
           usa[j].properties={
             [2016]: [+data[i].resettled_MM,+data[i].resettled,+data[i].share_MM]
           }
-        } else if (stateCode == iD & FY == 2015){
+        } else if (stateCode == iD && FY == 2015){
           usa[j].properties={
             [2015]: [+data[i].resettled_MM,+data[i].resettled,+data[i].share_MM]
           } 
-        }  else if (stateCode == iD & FY == 2014){
+        }  else if (stateCode == iD && FY == 2014){
             usa[j].properties={
               [2014]: [+data[i].resettled_MM,+data[i].resettled,+data[i].share_MM]
             }
@@ -72,7 +72,7 @@ var stateShapes = svg.append("g")
 
   function reporter(x) {
     d3.select("#report").text(function() {
-      return x.State + " " + x.properties.resettledMM2014;
+      return x.State + " " + x.properties.resettled;
         });
 };
 
@@ -93,7 +93,7 @@ function update(year){
 		slider.property("value", year);
 		d3.select(".year").text(year);
 		stateShapes.style("opacity", function(d) {
-			return d.share
+			return d.shareMM
 		});
 	}
 
