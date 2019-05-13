@@ -95,10 +95,12 @@ var variables = ["resettled14","resettled_MM14","resettled15","resettled_MM15","
 // ]
 
 margin = ({top: 10, right: 10, bottom: 20, left: 120})
+width = 570
+height = 300
 
 x = d3.scaleBand()
     .domain(variables)
-    .range([400 - margin.bottom, margin.top])
+    .range([height - margin.bottom, margin.top])
     .padding(0.1)
 
 y = d3.scaleLinear()
