@@ -119,6 +119,13 @@ vertical-align: middle;
   color: #fff;
 }
 
+#id5 {
+  /* width: 1200px; */
+  width: 75%;
+  height: 600px;
+  clear: both;
+  margin: 0 auto;
+}
 
 #vis {
   /* width: 1200px; */
