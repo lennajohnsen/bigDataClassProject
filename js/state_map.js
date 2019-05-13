@@ -179,10 +179,10 @@ function showDetail(d) {
                 d.State +
                 '</span><br/>' +
                 '<span class="name">Refugees Resettled in 2014: </span><span class="value">' +
-                addCommas(d.properties.resettled14) +
+                addCommas(d.properties.resettled2014) +
                 '</span><br/>' +
                 '<span class="name">Refugees Resettled in 2014 from MM Countries: </span><span class="value">' +
-                addCommas(d.properties.resettled14MM) +
+                addCommas(d.properties.resettled2014MM) +
                 '</span>';
 
   tooltip.showTooltip(content, d3.event);
