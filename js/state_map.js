@@ -126,8 +126,8 @@ var stateShapes = svg.append("g")
 //       .attr("font-weight", "bold"))
 
  svg4 = d3.select("#id6").append("svg")
-       .attr("width", width)
-       .attr("height", height)
+       .attr("width", 570)
+       .attr("height", 300)
        .style("-webkit-tap-highlight-color", "transparent");
        //.attr("viewBox", `0 0 ${width} ${height}`);
   
