@@ -144,13 +144,13 @@ svg4 = (this ? d3.select(this) : d3.create("svg"))
       .attr("height", y.bandwidth())
     .transition()
       .delay((d, i) => i * 20)
-      .attr("width", d => x(d.Activity));
+      .attr("width", d => x(d.Resettled));
   
   function mapfilter_data(){
         let reshape = []
-        let nhoodActivity = bos311.filter(d => d.State == connectedMap)
+        let nhoodActivity = bos311.filter(d => d.State == stateShapes)
         for (let va in variables) {
-          reshape.push({Name : variables[va], Activity : nhoodActivity[0][categories[cat]]})
+          reshape.push({Name : variables[va], Resettled : nhoodActivity[0][variables[va]]})
         }
         return reshape
     }
