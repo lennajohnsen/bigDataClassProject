@@ -5,8 +5,8 @@ var svg = d3.select("#id5").append("svg")
   .attr("height", 400);
 
 
-var height = 700
-var width = 400
+var height = 1200
+var width = 1200
 var margin = 20
 var path = d3.geoPath()
 
