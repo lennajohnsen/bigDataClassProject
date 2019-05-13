@@ -55,7 +55,7 @@ var stateShapes = svg.append("g")
 	.enter().append("path")
 	  .attr("d", path)
     .attr("class", "resettle")
-    .attr("opacity", d => d.properties.diffMMResettled14_18/d.properties.resettledMM2014)
+    //.attr("opacity", d => d.properties.diffMMResettled14_18/d.properties.resettledMM2014)
   .on("mouseover", function(d, i) {
           reporter(d);
       })
