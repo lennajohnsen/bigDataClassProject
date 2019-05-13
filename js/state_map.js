@@ -25,27 +25,6 @@ d3.csv("data/refugee by muslim majority by fy year by state.csv", function(data)
         if (stateCode == iD){
           usa[j].State = data[i].state;
         }
-        if (stateCode == iD && FY == 2018) {
-          usa[j].properties={
-            [2018]: [+data[i].resettled_MM,+data[i].resettled,+data[i].share_MM]
-          } 
-        } else if (stateCode == iD && FY == 2017){
-          usa[j].properties={
-            [2017]: [+data[i].resettled_MM,+data[i].resettled,+data[i].share_MM]
-          }
-        } else if (stateCode == iD && FY == 2016){
-          usa[j].properties={
-            [2016]: [+data[i].resettled_MM,+data[i].resettled,+data[i].share_MM]
-          }
-        } else if (stateCode == iD && FY == 2015){
-          usa[j].properties={
-            [2015]: [+data[i].resettled_MM,+data[i].resettled,+data[i].share_MM]
-          } 
-        }  else if (stateCode == iD && FY == 2014){
-            usa[j].properties={
-              [2014]: [+data[i].resettled_MM,+data[i].resettled,+data[i].share_MM]
-            }
-          }
           break;
         }
     }
