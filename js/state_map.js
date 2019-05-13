@@ -190,7 +190,7 @@ function showDetail(d) {
                 '<span class="name">Difference in Cases Resettled </span><span class="value">' +
                 addCommas(+d.properties.resettled2018 - +d.properties.resettled2014) + 
                 '</span><br/>' +
-                '<span class="name">Difference in Cases Resettled </span><span class="value">' +
+                '<span class="name">Difference in Cases Resettled from Muslim-Majority Countries </span><span class="value">' +
                 addCommas(+d.properties.resettledMM2018 - +d.properties.resettled2014) +
                 '</span>';
 
