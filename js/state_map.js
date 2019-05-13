@@ -57,7 +57,10 @@ var stateShapes = svg.append("g")
           reporter(d);
       })
   .on("click", function(d, i) {
-        selector(d);
+    //let stateChosen = d3.select(this);
+    const node = svg.node();
+    node.value = value = value === d.State ? 0 : d.State;
+    node.dispatchEvent(new CustomEvent("input"));
     });
 
   svg.append("path")
@@ -70,30 +73,26 @@ var stateShapes = svg.append("g")
         });
       };
 
-  function selector(x) {
-      selected = x.State;
-    };
-
   })
 })
 
-switch (state) {
-    case "Alabama": selected = usa[0]
-  }
 
-var variables = ["Resettled 2014","Resettled_MM 2014","Resettled 2015","resettled_MM15","resettled16","resettled_MM16","resettled17","resettled_MM17","resettled18","resettled_MM18"]
-var stateResettle = [
-  {"type":variables[0], "num": selected.properties.resettled14},
-  {"type":variables[1], "num": selected.properties.resettled_MM14},
-  {"type":variables[2], "num": selected.properties.resettled15},
-  {"type":variables[3], "num": selected.properties.resettled_MM15},
-  {"type":variables[4], "num": selected.properties.resettled16},
-  {"type":variables[5], "num": selected.properties.resettled_MM16},
-  {"type":variables[6], "num": selected.properties.resettled17},
-  {"type":variables[7], "num": selected.properties.resettled_MM17},
-  {"type":variables[8], "num": selected.properties.resettled18},
-  {"type":variables[9], "num": selected.properties.resettled_MM18},
-]
+
+bos311 = d3.csv("data/MMresettle_2014-2018.csv")
+
+var variables = ["resettled14","resettled_MM14","resettled15","resettled_MM15","resettled16","resettled_MM16","resettled17","resettled_MM17","resettled18","resettled_MM18"]
+// var stateResettle = [
+//   {"type":variables[0], "num": selected.properties.resettled14},
+//   {"type":variables[1], "num": selected.properties.resettled_MM14},
+//   {"type":variables[2], "num": selected.properties.resettled15},
+//   {"type":variables[3], "num": selected.properties.resettled_MM15},
+//   {"type":variables[4], "num": selected.properties.resettled16},
+//   {"type":variables[5], "num": selected.properties.resettled_MM16},
+//   {"type":variables[6], "num": selected.properties.resettled17},
+//   {"type":variables[7], "num": selected.properties.resettled_MM17},
+//   {"type":variables[8], "num": selected.properties.resettled18},
+//   {"type":variables[9], "num": selected.properties.resettled_MM18},
+// ]
 
 x = d3.scaleBand()
     .domain(stateResettle.map(d => d.type))
@@ -117,35 +116,78 @@ yAxis = g => g
       .attr("text-anchor", "start")
       .attr("font-weight", "bold"))
 
-var svg4 = d3.select("#id6").append("svg")
-      .attr("width", 570)
-      .attr("height", 300)
-      .style("-webkit-tap-highlight-color", "transparent")
-      .style("overflow", "visible");
+svg4 = (this ? d3.select(this) : d3.create("svg"))
+      .attr("width", width)
+      .attr("height", height)
+      .attr("viewBox", `0 0 ${width} ${height}`);
+  
+  if (!this) {
+    svg4.append("g")
+        .attr("fill", "steelblue")
+      .selectAll("rect")
+      .data(data)
+      .join("rect")
+        .attr("width", 0)
+        .attr("class", "bar")
 
     svg4.append("g")
-      .call(xAxis);
-   
-    svg4.append("g")
-      .call(yAxis);
-    
-    svg4.append("g")
-    .selectAll("rect")
-    .data(stateResettle.sort((a, b) => b.num - a.num))
-    .join("rect")
-      .attr("x", x(0))
-      .attr("y", d => y(d.type))
-      .attr("width", d => x(d.num) - x(0))
-      .attr("fill", "steelblue")
-      .attr("height", y.bandwidth());
+      .attr("class", "x-axis")
 
-    svg4.node().update = () => {
-        const t = svg.transition()
-            .duration(750);
-    
-    bar.data(usa, d => d.State)
-            .order()
-          .transition(t)
-            .delay((d, i) => i * 20)
-            .attr("x", d => x(d.State));
+    svg4.append("g")
+      .attr("class", "y-axis")
+  }
+  
+  svg4.selectAll(".bar")
+    .data(mapfilter_data)
+      .attr("x", d => x(0))
+      .attr("y", d => y(d.Name))
+      .attr("height", y.bandwidth())
+    .transition()
+      .delay((d, i) => i * 20)
+      .attr("width", d => x(d.Activity));
+  
+  function mapfilter_data(){
+        let reshape = []
+        let nhoodActivity = bos311.filter(d => d.State == connectedMap)
+        for (let va in variables) {
+          reshape.push({Name : variables[va], Activity : nhoodActivity[0][categories[cat]]})
+        }
+        return reshape
     }
+
+
+
+
+
+// var svg4 = d3.select("#id6").append("svg")
+//       .attr("width", 570)
+//       .attr("height", 300)
+//       .style("-webkit-tap-highlight-color", "transparent")
+//       .style("overflow", "visible");
+
+//     svg4.append("g")
+//       .call(xAxis);
+   
+//     svg4.append("g")
+//       .call(yAxis);
+    
+//     svg4.append("g")
+//     .selectAll("rect")
+//     .data(stateResettle.sort((a, b) => b.num - a.num))
+//     .join("rect")
+//       .attr("x", x(0))
+//       .attr("y", d => y(d.type))
+//       .attr("width", d => x(d.num) - x(0))
+//       .attr("fill", "steelblue")
+//       .attr("height", y.bandwidth());
+
+//     svg4.node().update = () => {
+//         const t = svg.transition()
+//             .duration(750);
+    
+//     bar.data(usa, d => d.State)
+//             .order()
+//           .transition(t)
+//             .delay((d, i) => i * 20)
+//             .attr("x", d => x(d.State));
+//     }
