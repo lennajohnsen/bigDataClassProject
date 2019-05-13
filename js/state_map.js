@@ -61,7 +61,9 @@ var stateShapes = svg.append("g")
     const node = svg.node();
     node.value = value = value === d.State ? 0 : d.State;
     node.dispatchEvent(new CustomEvent("input"));
-    });
+    })
+    .on('mouseover', showDetail)
+    .on('mouseout', hideDetail);
 
   svg.append("path")
       .attr("class", "state-borders")
@@ -162,7 +164,37 @@ svg4 = d3.select("#id6").append("svg")
     })
   }
 
+  /*
+   * Function called on mouseover to display the
+   * details of a bubble in the tooltip.
+*/
+function showDetail(d) {
+  // change outline to indicate hover state.
+  d3.select(this).attr('stroke', 'black');
 
+  var content = '<span class="name">State: </span><span class="value">' +
+                d.State +
+                '</span><br/>' +
+                '<span class="name">Refugees Resettled in 2014: </span><span class="value">' +
+                addCommas(d.properties.resettled14) +
+                '</span><br/>' +
+                '<span class="name">Refugees Resettled in 2014 from MM Countries: </span><span class="value">' +
+                addCommas(d.properties.resettled14MM) +
+                '</span>';
+
+  tooltip.showTooltip(content, d3.event);
+}
+
+/*
+ * Hides tooltip
+*/
+function hideDetail(d) {
+  // reset outline
+  d3.select(this)
+    .attr('stroke', d3.rgb(fillColor(d.mm)).darker());
+
+  tooltip.hideTooltip();
+}
 
 
 // var svg4 = d3.select("#id6").append("svg")
