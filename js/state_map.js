@@ -48,7 +48,7 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
 
 //console.log(usa)
 
-var color = d3.scale.scaleQuantize()
+var color = d3.scaleQuantize()
 		.domain([0,8000])
 		.range(["#beccae","#b6c7a5", "#afc39c", "#a7be93", "#a0b98a","#98b580","#91b077", "#89ab6e","#82a765", "#7aa25c"]);
 
