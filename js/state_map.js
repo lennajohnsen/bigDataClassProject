@@ -21,7 +21,6 @@ d3.csv("data/refugee by muslim majority by fy year by state.csv", function(data)
         var stateCode = +data[i].state_code
       for (var j in usa){
         var iD = +usa[j].id
-        var FY = +usa[j].fy
         if (stateCode == iD){
           usa[j].State = data[i].state;
         }
@@ -51,7 +50,7 @@ var stateShapes = svg.append("g")
 
   function reporter(x) {
     d3.select("#report").text(function() {
-      return x.State + " " + x.properties.resettled;
+      return x.State;
         });
 };
 
@@ -68,23 +67,23 @@ var stateShapes = svg.append("g")
 //   .x(d => x(d.Year))
 //   .y(d => y(d.resettled))
 
-function update(year){
-		slider.property("value", year);
-		d3.select(".year").text(year);
-		stateShapes.style("opacity", function(d) {
-			return d.shareMM
-		});
-	}
+// function update(year){
+// 		slider.property("value", year);
+// 		d3.select(".year").text(year);
+// 		stateShapes.style("opacity", function(d) {
+// 			return d.shareMM
+// 		});
+// 	}
 
-var slider = d3.select(".slider")
-		.append("input")
-			.attr("type", "range")
-			.attr("min", 2014)
-			.attr("max", 2018)
-			.attr("step", 1)
-			.on("input", function() {
-				var year = this.value;
-				update(year);
-			});
+// var slider = d3.select(".slider")
+// 		.append("input")
+// 			.attr("type", "range")
+// 			.attr("min", 2014)
+// 			.attr("max", 2018)
+// 			.attr("step", 1)
+// 			.on("input", function() {
+// 				var year = this.value;
+// 				update(year);
+// 			});
 
-update(2014)
+// update(2014)
