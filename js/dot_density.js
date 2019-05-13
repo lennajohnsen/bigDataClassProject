@@ -1,12 +1,12 @@
 //https://observablehq.com/@floledermann/dot-density-maps-with-d3
 
 var svg = d3.select("#id5").append("svg")
-  .attr("width", 1200)
-  .attr("height", 1200);
+  .attr("width", 700)
+  .attr("height", 400);
 
 
-var height = 1200
-var width = 1200
+var height = 700
+var width = 400
 var margin = 20
 var path = d3.geoPath()
 
