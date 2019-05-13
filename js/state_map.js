@@ -112,7 +112,7 @@ var stateShapes = svg.append("g")
 //     .domain([0, d3.max(bos311, d => d.Resettle)])
 //     .range([margin.left, width - margin.right])
 
- yAxis = g => g
+yAxis = g => g
      .attr("transform", `translate(0,${height - margin.bottom})`)
      .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0).tickFormat(d3.format("d")))
  
@@ -129,7 +129,7 @@ xAxis = g => g
        .attr("width", 570)
        .attr("height", 300)
        .style("-webkit-tap-highlight-color", "transparent")
-       .style("overflow", "visible");;
+       .style("overflow", "visible");
        //.attr("viewBox", `0 0 ${width} ${height}`);
   
 //   if (!this) {
@@ -144,8 +144,8 @@ xAxis = g => g
      svg4.append("g")
        .attr("class", "x-axis")
 
-//     svg4.append("g")
-//       .attr("class", "y-axis")
+       svg4.append("g")
+       .attr("class", "y-axis")
 //   }
   
 //   svg4.selectAll(".bar")
