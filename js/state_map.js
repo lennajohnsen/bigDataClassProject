@@ -128,7 +128,8 @@ xAxis = g => g
  svg4 = d3.select("#id6").append("svg")
        .attr("width", 570)
        .attr("height", 300)
-       .style("-webkit-tap-highlight-color", "transparent");
+       .style("-webkit-tap-highlight-color", "transparent")
+       .style("overflow", "visible");;
        //.attr("viewBox", `0 0 ${width} ${height}`);
   
 //   if (!this) {
