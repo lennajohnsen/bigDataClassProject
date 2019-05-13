@@ -50,8 +50,8 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
 
 var color = d3.scaleQuantize()
 		.domain([-8000,1000])
-    .range(schemePurples[9])
-    //.range(["#beccae","#b6c7a5", "#afc39c", "#a7be93", "#a0b98a","#98b580","#91b077", "#89ab6e","#82a765", "#7aa25c"]);
+    //.range(schemePurples[9])
+    .range(["#beccae","#b6c7a5", "#afc39c", "#a7be93", "#a0b98a","#98b580","#91b077", "#89ab6e","#82a765", "#7aa25c"]);
 
 var stateShapes = svg.append("g")
     .attr("class", "states")
@@ -60,7 +60,7 @@ var stateShapes = svg.append("g")
 	.enter().append("path")
 	  .attr("d", path)
     .attr("class", "resettle")
-    .attr("fill", color)
+    .attr("fill", d => color(d.properties.diffMMResettled14_18))
     //.attr("opacity", d => d.properties.diffMMResettled14_18/d.properties.resettledMM2014)
   .on("mouseover", function(d, i) {
           reporter(d);
