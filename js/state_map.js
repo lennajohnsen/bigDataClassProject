@@ -46,7 +46,7 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
     }
   }
 
-console.log(usa.properties.diffMMResettled14_18)
+//console.log(usa.properties.diffMMResettled14_18)
 
 var color = d3.scaleQuantize()
 		.domain([-8000, 200])
