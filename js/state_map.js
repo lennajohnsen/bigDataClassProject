@@ -178,11 +178,11 @@ function showDetail(d) {
   var content = '<span class="name">State: </span><span class="value">' +
                 d.State +
                 '</span><br/>' +
-                '<span class="name">Refugees Resettled in 2014: </span><span class="value">' +
+                '<span class="name">Resettled in 2014: </span><span class="value">' +
                 addCommas(d.properties.resettled2014) +
                 '</span><br/>' +
-                '<span class="name">Refugees Resettled in 2014 from MM Countries: </span><span class="value">' +
-                addCommas(d.properties.resettled2014MM) +
+                '<span class="name">Resettled in 2014 from Muslim-Majority Countries: </span><span class="value">' +
+                addCommas(d.properties.resettledMM2014) +
                 '</span>';
 
   tooltip.showTooltip(content, d3.event);
