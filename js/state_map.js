@@ -12,7 +12,7 @@ var projection = d3.geoAlbersUsa()
 var path = d3.geoPath()
  //.projection(projection)
 
-d3.csv("data/refugee by muslim majority by fy year by state.csv", function(data) {
+d3.csv("data/MMresettle_2014-2018.csv", function(data) {
   d3.json("data/us.json", function(json) {
 
     var usa = topojson.feature(json, json.objects.states).features;
