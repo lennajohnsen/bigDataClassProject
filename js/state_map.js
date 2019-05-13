@@ -21,21 +21,21 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
       for (var j in usa){
         var iD = +usa[j].id
         if (stateCode == iD) {
-          // usa[j].properties.shareMM2018 = +data[i].share_MM18;
-          // usa[j].properties.shareMM2017 = +data[i].share_MM17;
-          // usa[j].properties.shareMM2016 = +data[i].share_MM16;
-          // usa[j].properties.shareMM2015 = +data[i].share_MM15;
-          // usa[j].properties.shareMM2014 = +data[i].share_MM14;
-          // usa[j].properties.resettled2018 = +data[i].resettled18;
-          // usa[j].properties.resettled2017 = +data[i].resettled17;
-          // usa[j].properties.resettled2016 = +data[i].resettled16;
-          // usa[j].properties.resettled2015 = +data[i].resettled15;
-          // usa[j].properties.resettled2014 = +data[i].resettled14;
-          // usa[j].properties.resettledMM2018 = +data[i].resettled_MM18;
-          // usa[j].properties.resettledMM2017 = +data[i].resettled_MM17;
-          // usa[j].properties.resettledMM2016 = +data[i].resettled_MM16;
-          // usa[j].properties.resettledMM2015 = +data[i].resettled_MM15;
-          // usa[j].properties.resettledMM2014 = +data[i].resettled_MM14;
+          usa[j].properties.shareMM2018 = +data[i].share_MM18;
+          usa[j].properties.shareMM2017 = +data[i].share_MM17;
+          usa[j].properties.shareMM2016 = +data[i].share_MM16;
+          usa[j].properties.shareMM2015 = +data[i].share_MM15;
+          usa[j].properties.shareMM2014 = +data[i].share_MM14;
+          usa[j].properties.resettled2018 = +data[i].resettled18;
+          usa[j].properties.resettled2017 = +data[i].resettled17;
+          usa[j].properties.resettled2016 = +data[i].resettled16;
+          usa[j].properties.resettled2015 = +data[i].resettled15;
+          usa[j].properties.resettled2014 = +data[i].resettled14;
+          usa[j].properties.resettledMM2018 = +data[i].resettled_MM18;
+          usa[j].properties.resettledMM2017 = +data[i].resettled_MM17;
+          usa[j].properties.resettledMM2016 = +data[i].resettled_MM16;
+          usa[j].properties.resettledMM2015 = +data[i].resettled_MM15;
+          usa[j].properties.resettledMM2014 = +data[i].resettled_MM14;
           usa[j].State = data[i].state;
           //usa[j].id = data[i].state_code;
           break;
@@ -101,3 +101,79 @@ var stateShapes = svg.append("g")
 // 			});
 
 // update(2014)
+
+resettleData = d3.csv("data/MMresettle_2014-2018.csv")
+console.log(resettleData)
+
+var variables = ["Resettled 2014","Resettled_MM 2014","Resettled 2015","resettled_MM15","resettled16","resettled_MM16","resettled17","resettled_MM17","resettled18","resettled_MM18"]
+var stateResettle = [
+  {"type":variables[0], "num": selected.properties.resettled14},
+  {"type":variables[1], "num": selected.properties.resettled_MM14},
+  {"type":variables[2], "num": selected.properties.resettled15},
+  {"type":variables[3], "num": selected.properties.resettled_MM15},
+  {"type":variables[4], "num": selected.properties.resettled16},
+  {"type":variables[5], "num": selected.properties.resettled_MM16},
+  {"type":variables[6], "num": selected.properties.resettled17},
+  {"type":variables[7], "num": selected.properties.resettled_MM17},
+  {"type":variables[8], "num": selected.properties.resettled18},
+  {"type":variables[9], "num": selected.properties.resettled_MM18},
+]
+
+x = d3.scaleBand()
+    .domain(stateResettle.map(d => d.type))
+    .range([height - margin.bottom, margin.top])
+    .padding(0.1)
+
+y = d3.scaleLinear()
+    .domain([0, d3.max(stateResettle, d => d.num)])
+    .range([margin.left, width - margin.right])
+
+xAxis = g => g
+    .attr("transform", `translate(0,${height - margin.bottom})`)
+    .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0).tickFormat(d3.format("d")))
+ 
+yAxis = g => g
+    .attr("transform", `translate(${margin.left},0)`)
+    .call(d3.axisLeft(y))
+    .call(g => g.select(".domain").remove())
+    .call(g => g.select(".tick:last-of-type text").clone()
+      .attr("x", 3)
+      .attr("text-anchor", "start")
+      .attr("font-weight", "bold"))
+
+var svg4 = d3.select("#id6").append("svg")
+      .attr("width", 570)
+      .attr("height", 300)
+      .style("-webkit-tap-highlight-color", "transparent")
+      .style("overflow", "visible");
+
+    svg4.append("g")
+      .call(xAxis);
+   
+    svg4.append("g")
+      .call(yAxis);
+    
+    svg4.append("g")
+    .selectAll("rect")
+    .data(stateResettle.sort((a, b) => b.num - a.num))
+    .join("rect")
+      .attr("x", x(0))
+      .attr("y", d => y(d.type))
+      .attr("width", d => x(d.num) - x(0))
+      .attr("fill", "steelblue")
+      .attr("height", y.bandwidth());
+
+      svg.node().update = () => {
+        const t = svg.transition()
+            .duration(750);
+    
+        bar.data(boston311data, d => d.name)
+            .order()
+          .transition(t)
+            .delay((d, i) => i * 20)
+            .attr("x", d => x(d.Name));
+    
+        gx.transition(t)
+            .call(yAxis)
+          .selectAll(".tick")
+            .delay((d, i) => i * 20);}
