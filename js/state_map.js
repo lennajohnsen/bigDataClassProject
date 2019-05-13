@@ -53,10 +53,12 @@ var stateShapes = svg.append("g")
 	  .attr("d", path)
     .attr("class", "resettle")
    //.attr("opacity", d => d.properties.shareMM2016)
-   
   .on("mouseover", function(d, i) {
           reporter(d);
-      });
+      })
+  .on("click", function(d, i) {
+        selector(d);
+    });
 
   svg.append("path")
       .attr("class", "state-borders")
@@ -66,13 +68,17 @@ var stateShapes = svg.append("g")
     d3.select("#report").text(function() {
       return x.State;
         });
-};
+      };
+
+  function selector(x) {
+      selected = x.State;
+    };
 
   })
 })
 
 switch (selected) {
-    case "South Boston Waterfront": return usa[0]
+    case "South Boston Waterfront": return usa[0].properties
     case "Back Bay": return boston311data[1]
     case "East Boston": return boston311data[2]
     case "Roxbury": return boston311data[3]
