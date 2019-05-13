@@ -43,7 +43,7 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
     }
   }
 
-console.log(usa[2].properties)
+console.log(usa)
 
 var stateShapes = svg.append("g")
     .attr("class", "states")
@@ -77,32 +77,32 @@ var stateShapes = svg.append("g")
   })
 })
 
-// switch (selected) {
-//     case "South Boston Waterfront": return usa[0].properties
-//     case "Back Bay": return boston311data[1]
-//     case "East Boston": return boston311data[2]
-//     case "Roxbury": return boston311data[3]
-//     case "South End": return boston311data[4]
-//     case "Beacon Hill": return boston311data[5]
-//     case "Downtown": return boston311data[6]
-//     case "Charlestown": return boston311data[7]
-//     case "West End": return boston311data[8]
-//     case "Mission Hill": return boston311data[9]
-//     case "Longwood Medical Area": return boston311data[10]
-//     case "Roslindale": return boston311data[11]
-//     case "Jamaica Plain": return boston311data[12]
-//     case "Chinatown": return boston311data[13]
-//     case "North End": return boston311data[14]
-//     case "Bay Village": return boston311data[15]
-//     case "Leather District": return boston311data[16]
-//     case "West Roxbury": return boston311data[17]
-//     case "Mattapan": return boston311data[18]
-//     case "Fenway": return boston311data[19]
-//     case "Brighton": return boston311data[20]
-//     case "South Boston": return boston311data[21]
-//     case "Allston": return boston311data[22]
-//     case "Dorchester": return boston311data[23]
-//   }
+switch (selected) {
+    case "South Boston Waterfront": return usa[0].properties
+    case "Back Bay": return boston311data[1]
+    case "East Boston": return boston311data[2]
+    case "Roxbury": return boston311data[3]
+    case "South End": return boston311data[4]
+    case "Beacon Hill": return boston311data[5]
+    case "Downtown": return boston311data[6]
+    case "Charlestown": return boston311data[7]
+    case "West End": return boston311data[8]
+    case "Mission Hill": return boston311data[9]
+    case "Longwood Medical Area": return boston311data[10]
+    case "Roslindale": return boston311data[11]
+    case "Jamaica Plain": return boston311data[12]
+    case "Chinatown": return boston311data[13]
+    case "North End": return boston311data[14]
+    case "Bay Village": return boston311data[15]
+    case "Leather District": return boston311data[16]
+    case "West Roxbury": return boston311data[17]
+    case "Mattapan": return boston311data[18]
+    case "Fenway": return boston311data[19]
+    case "Brighton": return boston311data[20]
+    case "South Boston": return boston311data[21]
+    case "Allston": return boston311data[22]
+    case "Dorchester": return boston311data[23]
+  }
 
 var variables = ["Resettled 2014","Resettled_MM 2014","Resettled 2015","resettled_MM15","resettled16","resettled_MM16","resettled17","resettled_MM17","resettled18","resettled_MM18"]
 var stateResettle = [
