@@ -176,7 +176,8 @@ function showDetail(d) {
   // change outline to indicate hover state.
   d3.select(this).attr('stroke', 'black');
 
-  firstDiff = +d.properties.resettled2014 - +d.properties.resetled2018
+  firstDiff = (+d.properties.resettled2014) - (+d.properties.resetled2018)
+  console.log(firstDiff)
   secondDiff = +d.properties.resettledMM2014 - +d.properties.resetled2018
 
   var content = '<span class="name">State: </span><span class="value">' +
