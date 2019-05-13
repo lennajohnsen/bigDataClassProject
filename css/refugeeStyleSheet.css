@@ -85,7 +85,7 @@ vertical-align: middle;
 
 /* State Styling */
 .states :hover {
-  stroke: white;
+  stroke: black;
 }
 
 .state-borders {
