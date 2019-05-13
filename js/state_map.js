@@ -176,18 +176,14 @@ function showDetail(d) {
   // change outline to indicate hover state.
   d3.select(this).attr('stroke', 'black');
 
-  firstDiff = (+d.properties.resettled2014) - (+d.properties.resettled2018)
-  console.log(firstDiff)
-  secondDiff = +d.properties.resettledMM2014 - +d.properties.resettled2018
-
   var content = '<span class="name">State: </span><span class="value">' +
                 d.State +
                 '</span><br/>' +
                 '<span class="name">Difference in Number Resettled in 2014 vs 2018: </span><span class="value">' +
-                addCommas(d.properties.resettled2014) +
+                addCommas(+d.properties.resettled2014 - +d.properties.resettled2018) +
                 '</span><br/>' +
                 '<span class="name">Difference in Number Resettled in 2014 vs 2018 from Muslim-Majority Countries: </span><span class="value">' +
-                addCommas(secondDiff) +
+                addCommas(+d.properties.resettledMM2014 - +d.properties.resettled2018) +
                 '</span>';
 
   tooltip.showTooltip(content, d3.event);
