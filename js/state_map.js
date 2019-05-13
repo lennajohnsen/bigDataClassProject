@@ -54,7 +54,7 @@ var stateShapes = svg.append("g")
 	.enter().append("path")
 	  .attr("d", path)
     .attr("class", "resettle")
-   //.attr("opacity", d => d.properties.shareMM2016)
+   .attr("opacity", d => d.properties.shareMM2016)
   .on("mouseover", function(d, i) {
           reporter(d);
       })
