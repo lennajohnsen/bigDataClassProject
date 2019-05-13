@@ -75,14 +75,14 @@ var stateShapes = svg.append("g")
 })
 
 var line = d3.line()
-.defined(d => !isNaN(d.Cap))
-.x(d => x(d.Year))
-.y(d => y(d.Cap))
+  .defined(d => !isNaN(d.Cap))
+  .x(d => x(d.Year))
+  .y(d => y(d.Cap))
 
 var line2 = d3.line()
-.defined(d => !isNaN(d.resettled))
-.x(d => x(d.Year))
-.y(d => y(d.resettled))
+  .defined(d => !isNaN(d.resettled))
+  .x(d => x(d.Year))
+  .y(d => y(d.resettled))
 
 
 
