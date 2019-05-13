@@ -17,7 +17,8 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
     var simplified = topojson.simplify(presimplified, topojson.quantile(presimplified, .11))
     var usa = topojson.feature(simplified, simplified.objects.states).features
     var states = topojson.feature(simplified, simplified.objects.states)
-    var projection = d3.fitExtent([[margin, margin], [width - margin, height - margin]], states)
+    var projection = d3.geoConicConformal()
+      .fitExtent([[margin, margin], [width - margin, height - margin]], states)
     var path = d3.geoPath()
       .projection(projection)
     //var projection = d3.geoAlbers().fitExtent([[margin, margin], [width - margin, height - margin]], states)
