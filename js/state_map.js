@@ -16,14 +16,28 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
   d3.json("data/us.json", function(json) {
 
     var usa = topojson.feature(json, json.objects.states).features;
-     
-    for (var i = 0; i < data.length; i++) {
+      for (var i = 0; i < data.length; i++) {
         var stateCode = +data[i].state_code
       for (var j in usa){
         var iD = +usa[j].id
-        if (stateCode == iD){
+        if (stateCode == iD) {
+          // usa[j].properties.shareMM2018 = +data[i].share_MM18;
+          // usa[j].properties.shareMM2017 = +data[i].share_MM17;
+          // usa[j].properties.shareMM2016 = +data[i].share_MM16;
+          // usa[j].properties.shareMM2015 = +data[i].share_MM15;
+          // usa[j].properties.shareMM2014 = +data[i].share_MM14;
+          // usa[j].properties.resettled2018 = +data[i].resettled18;
+          // usa[j].properties.resettled2017 = +data[i].resettled17;
+          // usa[j].properties.resettled2016 = +data[i].resettled16;
+          // usa[j].properties.resettled2015 = +data[i].resettled15;
+          // usa[j].properties.resettled2014 = +data[i].resettled14;
+          // usa[j].properties.resettledMM2018 = +data[i].resettled_MM18;
+          // usa[j].properties.resettledMM2017 = +data[i].resettled_MM17;
+          // usa[j].properties.resettledMM2016 = +data[i].resettled_MM16;
+          // usa[j].properties.resettledMM2015 = +data[i].resettled_MM15;
+          // usa[j].properties.resettledMM2014 = +data[i].resettled_MM14;
           usa[j].State = data[i].state;
-        }
+          //usa[j].id = data[i].state_code;
           break;
         }
     }
