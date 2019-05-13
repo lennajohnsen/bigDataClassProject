@@ -6,8 +6,8 @@ var svg = d3.select("#id5").append("svg")
   .style("overflow", "visible");
 
 
-var height = 1200
-var width = 1200
+var height = 700
+var width = 400
 var margin = 20
 var projection = d3.fitExtent([[margin, margin], [width - margin, height - margin]], states)
 var path = d3.geoPath()
