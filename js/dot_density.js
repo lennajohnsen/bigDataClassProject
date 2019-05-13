@@ -2,14 +2,13 @@
 
 var svg = d3.select("#id5").append("svg")
   .attr("width", 700)
-  .attr("height", 400)
-  .style("overflow", "visible");
+  .attr("height", 400);
 
 
 var height = 700
 var width = 400
 var margin = 20
-
+var path = d3.geoPath()
 
 d3.csv("data/MMresettle_2014-2018.csv", function(data) {
  d3.json("data/us.json", function(json) {
@@ -19,8 +18,7 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
     var states = topojson.feature(simplified, simplified.objects.states)
     var projection = d3.geoConicConformal()
       .fitExtent([[margin, margin], [width - margin, height - margin]], states)
-    var path = d3.geoPath()
-      .projection(projection)
+ 
     //var projection = d3.geoAlbers().fitExtent([[margin, margin], [width - margin, height - margin]], states)
 
     for (var i = 0; i < data.length; i++) {
