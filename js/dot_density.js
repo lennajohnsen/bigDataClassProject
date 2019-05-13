@@ -9,7 +9,9 @@ var svg = d3.select("#id5").append("svg")
 var height = 1200
 var width = 1200
 var margin = 20
+var projection = d3.fitExtent([[margin, margin], [width - margin, height - margin]], states)
 var path = d3.geoPath()
+  .projection(projection)
 
 d3.csv("data/MMresettle_2014-2018.csv", function(data) {
  d3.json("data/us.json", function(json) {
