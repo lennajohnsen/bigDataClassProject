@@ -99,31 +99,31 @@ var stateShapes = svg.append("g")
 // //   {"type":variables[9], "num": selected.properties.resettled_MM18},
 // // ]
 
-// margin = ({top: 10, right: 10, bottom: 20, left: 120})
+ margin = ({top: 10, right: 10, bottom: 20, left: 120})
 // width = 570
 // height = 300
 
-// x = d3.scaleBand()
+// y = d3.scaleBand()
 //     .domain(variables)
 //     .range([height - margin.bottom, margin.top])
 //     .padding(0.1)
 
-// y = d3.scaleLinear()
+// x = d3.scaleLinear()
 //     .domain([0, d3.max(bos311, d => d.Resettle)])
 //     .range([margin.left, width - margin.right])
 
- xAxis = g => g
+ yAxis = g => g
      .attr("transform", `translate(0,${height - margin.bottom})`)
      .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0).tickFormat(d3.format("d")))
  
-// yAxis = g => g
-//     .attr("transform", `translate(${margin.left},0)`)
-//     .call(d3.axisLeft(y))
-//     .call(g => g.select(".domain").remove())
-//     .call(g => g.select(".tick:last-of-type text").clone()
-//       .attr("x", 3)
-//       .attr("text-anchor", "start")
-//       .attr("font-weight", "bold"))
+xAxis = g => g
+     .attr("transform", `translate(${margin.left},0)`)
+     .call(d3.axisLeft(y))
+     .call(g => g.select(".domain").remove())
+     .call(g => g.select(".tick:last-of-type text").clone()
+       .attr("x", 3)
+       .attr("text-anchor", "start")
+       .attr("font-weight", "bold"))
 
  svg4 = d3.select("#id6").append("svg")
        .attr("width", 570)
