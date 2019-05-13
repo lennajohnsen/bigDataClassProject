@@ -9,6 +9,8 @@ var svg = d3.select("#id5").append("svg")
 var projection = d3.geoAlbersUsa()
   .scale([100]);
 
+var tooltip = floatingTooltip('gates_tooltip', 240);  
+
 var path = d3.geoPath()
  //.projection(projection)
 
