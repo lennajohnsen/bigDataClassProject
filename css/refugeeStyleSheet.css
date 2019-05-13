@@ -13,7 +13,7 @@ font-family: 'Chivo', sans-serif;
   
 }
 
-a:link {
+a:link, a:visited {
 color: #7aa25c;
 text-decoration: underline;
 }
