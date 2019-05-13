@@ -90,8 +90,8 @@ vertical-align: middle;
 
 .state-borders {
   fill: none;
-  stroke: none;
-  stroke-width: 0.5px;
+  stroke: #fff;
+  stroke-width: 0.75px;
   stroke-linejoin: round;
   stroke-linecap: round;
   pointer-events: none;
