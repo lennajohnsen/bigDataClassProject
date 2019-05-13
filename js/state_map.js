@@ -78,91 +78,92 @@ var stateShapes = svg.append("g")
   })
 })
 
+//an attempt to make a bar chart appear like final question here https://observablehq.com/@cesandoval/pset-8/2
+//but .filter is unhappy with the data
 
+// bos311 = d3.csv("data/MMresettle_2014-2018.csv")
 
-bos311 = d3.csv("data/MMresettle_2014-2018.csv")
+// var variables = ["resettled14","resettled_MM14","resettled15","resettled_MM15","resettled16","resettled_MM16","resettled17","resettled_MM17","resettled18","resettled_MM18"]
+// // var stateResettle = [
+// //   {"type":variables[0], "num": selected.properties.resettled14},
+// //   {"type":variables[1], "num": selected.properties.resettled_MM14},
+// //   {"type":variables[2], "num": selected.properties.resettled15},
+// //   {"type":variables[3], "num": selected.properties.resettled_MM15},
+// //   {"type":variables[4], "num": selected.properties.resettled16},
+// //   {"type":variables[5], "num": selected.properties.resettled_MM16},
+// //   {"type":variables[6], "num": selected.properties.resettled17},
+// //   {"type":variables[7], "num": selected.properties.resettled_MM17},
+// //   {"type":variables[8], "num": selected.properties.resettled18},
+// //   {"type":variables[9], "num": selected.properties.resettled_MM18},
+// // ]
 
-var variables = ["resettled14","resettled_MM14","resettled15","resettled_MM15","resettled16","resettled_MM16","resettled17","resettled_MM17","resettled18","resettled_MM18"]
-// var stateResettle = [
-//   {"type":variables[0], "num": selected.properties.resettled14},
-//   {"type":variables[1], "num": selected.properties.resettled_MM14},
-//   {"type":variables[2], "num": selected.properties.resettled15},
-//   {"type":variables[3], "num": selected.properties.resettled_MM15},
-//   {"type":variables[4], "num": selected.properties.resettled16},
-//   {"type":variables[5], "num": selected.properties.resettled_MM16},
-//   {"type":variables[6], "num": selected.properties.resettled17},
-//   {"type":variables[7], "num": selected.properties.resettled_MM17},
-//   {"type":variables[8], "num": selected.properties.resettled18},
-//   {"type":variables[9], "num": selected.properties.resettled_MM18},
-// ]
+// margin = ({top: 10, right: 10, bottom: 20, left: 120})
+// width = 570
+// height = 300
 
-margin = ({top: 10, right: 10, bottom: 20, left: 120})
-width = 570
-height = 300
+// x = d3.scaleBand()
+//     .domain(variables)
+//     .range([height - margin.bottom, margin.top])
+//     .padding(0.1)
 
-x = d3.scaleBand()
-    .domain(variables)
-    .range([height - margin.bottom, margin.top])
-    .padding(0.1)
+// y = d3.scaleLinear()
+//     .domain([0, d3.max(bos311, d => d.Resettle)])
+//     .range([margin.left, width - margin.right])
 
-y = d3.scaleLinear()
-    .domain([0, d3.max(bos311, d => d.Resettle)])
-    .range([margin.left, width - margin.right])
-
-xAxis = g => g
-    .attr("transform", `translate(0,${height - margin.bottom})`)
-    .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0).tickFormat(d3.format("d")))
+// xAxis = g => g
+//     .attr("transform", `translate(0,${height - margin.bottom})`)
+//     .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0).tickFormat(d3.format("d")))
  
-yAxis = g => g
-    .attr("transform", `translate(${margin.left},0)`)
-    .call(d3.axisLeft(y))
-    .call(g => g.select(".domain").remove())
-    .call(g => g.select(".tick:last-of-type text").clone()
-      .attr("x", 3)
-      .attr("text-anchor", "start")
-      .attr("font-weight", "bold"))
+// yAxis = g => g
+//     .attr("transform", `translate(${margin.left},0)`)
+//     .call(d3.axisLeft(y))
+//     .call(g => g.select(".domain").remove())
+//     .call(g => g.select(".tick:last-of-type text").clone()
+//       .attr("x", 3)
+//       .attr("text-anchor", "start")
+//       .attr("font-weight", "bold"))
 
-svg4 = d3.select("#id6").append("svg")
-      .attr("width", width)
-      .attr("height", height)
-      .style("-webkit-tap-highlight-color", "transparent");
-      //.attr("viewBox", `0 0 ${width} ${height}`);
+// svg4 = d3.select("#id6").append("svg")
+//       .attr("width", width)
+//       .attr("height", height)
+//       .style("-webkit-tap-highlight-color", "transparent");
+//       //.attr("viewBox", `0 0 ${width} ${height}`);
   
-  if (!this) {
-    svg4.append("g")
-        .attr("fill", "steelblue")
-      .selectAll("rect")
-      .data(data)
-      .join("rect")
-        .attr("width", 0)
-        .attr("class", "bar")
+//   if (!this) {
+//     svg4.append("g")
+//         .attr("fill", "steelblue")
+//       .selectAll("rect")
+//       .data(data)
+//       .join("rect")
+//         .attr("width", 0)
+//         .attr("class", "bar")
 
-    svg4.append("g")
-      .attr("class", "x-axis")
+//     svg4.append("g")
+//       .attr("class", "x-axis")
 
-    svg4.append("g")
-      .attr("class", "y-axis")
-  }
+//     svg4.append("g")
+//       .attr("class", "y-axis")
+//   }
   
-  svg4.selectAll(".bar")
-    .data(mapfilter_data)
-      .attr("x", d => x(0))
-      .attr("y", d => y(d.Name))
-      .attr("height", y.bandwidth())
-    .transition()
-      .delay((d, i) => i * 20)
-      .attr("width", d => x(d.Resettled));
+//   svg4.selectAll(".bar")
+//     .data(mapfilter_data)
+//       .attr("x", d => x(0))
+//       .attr("y", d => y(d.Name))
+//       .attr("height", y.bandwidth())
+//     .transition()
+//       .delay((d, i) => i * 20)
+//       .attr("width", d => x(d.Resettled));
   
-  function mapfilter_data(){
-        let reshape = []
-        bos311 = d3.csv("data/MMresettle_2014-2018.csv", function(bos311){
-        nhoodActivity = bos311.filter(d => d.State == stateChosen)
-        for (let va in variables) {
-          reshape.push({Name : variables[va], Resettled : nhoodActivity[0][variables[va]]})
-        }
-        return reshape
-    })
-  }
+//   function mapfilter_data(){
+//         let reshape = []
+//         bos311 = d3.csv("data/MMresettle_2014-2018.csv", function(bos311){
+//         nhoodActivity = bos311.filter(d => d.State == stateChosen)
+//         for (let va in variables) {
+//           reshape.push({Name : variables[va], Resettled : nhoodActivity[0][variables[va]]})
+//         }
+//         return reshape
+//     })
+//   }
 
   /*
    * Function called on mouseover to display the
