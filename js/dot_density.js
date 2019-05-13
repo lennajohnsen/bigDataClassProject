@@ -5,8 +5,8 @@ var svg = d3.select("#id5").append("svg")
   .attr("height", 400);
 
 
-var height = 1200
-var width = 1200
+var height = 700
+var width = 400
 var margin = 20
 var path = d3.geoPath()
 
@@ -48,7 +48,7 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
     //var numPoints = states[5].properties.resettledMM2018
     //console.log(numPoints)
     //console.log(states.features[0])
-    console.log(usa)
+    //console.log(usa)
     //console.log(usa.properties.resttledMM2017)
 
   
