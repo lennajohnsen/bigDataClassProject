@@ -51,7 +51,8 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
 var color = d3.scaleQuantize()
 		.domain([-8000, 200])
     //.range(schemePurples[9])
-    .range(["#beccae","#b6c7a5", "#afc39c", "#a7be93", "#a0b98a","#98b580","#91b077", "#89ab6e","#82a765", "#7aa25c"]);
+    .range(["#beccae", "#afc39c", "#a0b98a","#89ab6e","#7aa25c"]);
+    //"#b6c7a5","#a7be93","#98b580","#91b077",,"#82a765",
 
 var stateShapes = svg.append("g")
     .attr("class", "states")
