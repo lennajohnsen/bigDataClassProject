@@ -120,10 +120,11 @@ yAxis = g => g
       .attr("text-anchor", "start")
       .attr("font-weight", "bold"))
 
-svg4 = (this ? d3.select(this) : d3.append("svg"))
+svg4 = d3.select("#id6").append("svg")
       .attr("width", width)
       .attr("height", height)
-      .attr("viewBox", `0 0 ${width} ${height}`);
+      .style("-webkit-tap-highlight-color", "transparent");
+      //.attr("viewBox", `0 0 ${width} ${height}`);
   
   if (!this) {
     svg4.append("g")
