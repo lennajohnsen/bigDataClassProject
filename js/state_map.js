@@ -57,7 +57,7 @@ var stateShapes = svg.append("g")
           reporter(d);
       })
   .on("click", function(d, i) {
-    //let stateChosen = d3.select(this);
+    let stateChosen = d3.select(this);
     const node = svg.node();
     node.value = value = value === d.State ? 0 : d.State;
     node.dispatchEvent(new CustomEvent("input"));
@@ -78,7 +78,7 @@ var stateShapes = svg.append("g")
 
 
 
-bos311 = d3.csv("data/MMresettle_2014-2018.csv")
+bos311 = d3.csv("data/MMresettle_2014-2018.csv", d => (d3.autoType(d)))
 
 var variables = ["resettled14","resettled_MM14","resettled15","resettled_MM15","resettled16","resettled_MM16","resettled17","resettled_MM17","resettled18","resettled_MM18"]
 // var stateResettle = [
@@ -153,7 +153,7 @@ svg4 = d3.select("#id6").append("svg")
   
   function mapfilter_data(){
         let reshape = []
-        let nhoodActivity = bos311.filter(d => d.State == stateShapes)
+        let nhoodActivity = bos311.filter(d => d.State == stateChosen)
         for (let va in variables) {
           reshape.push({Name : variables[va], Resettled : nhoodActivity[0][variables[va]]})
         }
