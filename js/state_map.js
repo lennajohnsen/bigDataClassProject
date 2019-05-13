@@ -120,7 +120,7 @@ yAxis = g => g
       .attr("text-anchor", "start")
       .attr("font-weight", "bold"))
 
-svg4 = (this ? d3.select(this) : d3.create("svg"))
+svg4 = (this ? d3.select(this) : d3.append("svg"))
       .attr("width", width)
       .attr("height", height)
       .attr("viewBox", `0 0 ${width} ${height}`);
