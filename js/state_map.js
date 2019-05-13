@@ -46,7 +46,7 @@ d3.csv("data/MMresettle_2014-2018.csv", function(data) {
     }
   }
 
-console.log(usa)
+//console.log(usa)
 
 var stateShapes = svg.append("g")
     .attr("class", "states")
